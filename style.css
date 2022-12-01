@@ -30,7 +30,9 @@ h1{
     width: 250px;
     padding: 10px;
     margin: 20px;   
-    background-image: url(https://cdn.pixabay.com/photo/2020/03/25/12/33/apple-4967157__340.png)
+    background-image: url(https://cdn.pixabay.com/photo/2020/03/25/12/33/apple-4967157__340.png);
+    background-size: cover;
+    background-position:bottom;
 }
 #allslots{
     display: flex;
@@ -38,4 +40,7 @@ h1{
 img{
     max-width: 100px;
     max-height: 100px;
+}
+body{
+    background-color: black;
 }
