@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+} 
+.slot{
+    border: solid;
+    border-color: black;
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    margin: 20px; 
+    background-color: aqua;
+}   
+.lever{
+    border: solid;
+    border-color: red;
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    margin: 20px;
+}
+.allslots{
+    display: flex;
+} 
+/* .moneyInput{
+    background-color: red;
+} */
