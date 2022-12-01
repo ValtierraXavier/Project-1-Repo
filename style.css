@@ -1,26 +1,41 @@
 h1{
     text-align: center;
 } 
-.slot{
-    border: solid;
-    border-color: black;
-    height: 300px;
-    width: 250px;
-    padding: 10px;
-    margin: 20px; 
+#slot1{
+    border: solid black;
     background-color: aqua;
-}   
-.lever{
-    border: solid;
-    border-color: red;
     height: 300px;
     width: 250px;
     padding: 10px;
-    margin: 20px;
+    margin: 20px;   
+    background-image: url(https://cdn.pixabay.com/photo/2014/04/02/10/40/bananas-304202__340.png);
+    background-position: center;
+    background-size: cover;
 }
-.allslots{
+#slot2{
+    border: solid black;
+    background-color: aqua;
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    margin: 20px;   
+    background-image: url(https://st2.depositphotos.com/1007168/48416/v/600/depositphotos_484169170-stock-illustration-illustrated-illustration-orange-fruit-vector.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#slot3{
+    border: solid black;
+    background-color: aqua;
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    margin: 20px;   
+    background-image: url(https://cdn.pixabay.com/photo/2020/03/25/12/33/apple-4967157__340.png)
+}
+#allslots{
     display: flex;
 } 
-/* .moneyInput{
-    background-color: red;
-} */
+img{
+    max-width: 100px;
+    max-height: 100px;
+}
