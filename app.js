@@ -1,17 +1,23 @@
 let 
-drum1SpeedSetting = 50, 
-drum2SpeedSetting = 100, 
-drum3SpeedSetting = 150;
+drum1SpeedSetting = 40, 
+drum2SpeedSetting = 30, 
+drum3SpeedSetting = 20;
 
 let 
-stopDrum1 = false,
-stopDrum2 = false,
-stopDrum3 = false,
+stopDrum1,
+stopDrum2,
+stopDrum3,
 drumSpinning = null;
 
-let d1, d2, d3;
+let d1; 
+let d2; 
+let d3;
 
-let match3, match2, noMatch;
+let winOrLose={
+    win: "You Win!",
+    lose:"You Lose"
+}
+//let match3, noMatch;
 
 let 
 drum1Position, 
@@ -19,12 +25,10 @@ drum2Position,
 drum3Position;
 
 let drumArray=[];
-let reverseDrumArray=[drum3Position,drum2Position,drum1Position];
+let reverseDrumArray=[];
 let detectionArray=[];
-// console.log(drum1Position);
-// console.log(drum2Position);
-// console.log(drum3Position);
 
+let compareD1, compareD2, compareD3, match3;
 
 const symbolsObj ={
     aSymbol:"A",
@@ -34,6 +38,19 @@ const symbolsObj ={
     eSymbol:"E"
 };
 
+//starts a function to spin all drums when you click on the 'spin" button
+let startRoll = document.getElementById('spinButton');
+startRoll.addEventListener("click",spinDrums);
+
+//starts a function to stop all drums when you click the "stop" button.
+let stopRoll = document.getElementById('stopButton');
+stopRoll.addEventListener('click',stopDrums);
+
+//resets all values to initial values.
+let resetAll = document.getElementById('resetButton');
+resetAll.addEventListener('click',resetGame);
+
+//function to set how quickly the symbols refresh on drum1 takes drum1SpeedSetting.
 function drum1Speed(ms){
     return new Promise(resolve =>{
         
@@ -41,6 +58,7 @@ function drum1Speed(ms){
 })
 }
 
+//function to set how quickly the symbols refresh on drum1 takes drum2SpeedSetting.
 function drum2Speed(ms){
     return new Promise(resolve =>{
         
@@ -48,6 +66,7 @@ function drum2Speed(ms){
 })
 }
 
+//function to set how quickly the symbols refresh on drum1 takes drum3SpeedSetting.
 function drum3Speed(ms){
     return new Promise(resolve =>{
         
@@ -55,6 +74,7 @@ function drum3Speed(ms){
 })
 }
 
+//a function to loop through symbols displayed in drum1
 async function spinDrum1(){
 for(let i=0;i<=4;i++){
     if (document.getElementById('firstDrumSymbol').innerText === symbolsObj.aSymbol){
@@ -77,14 +97,13 @@ for(let i=0;i<=4;i++){
     }
     //console.log(document.getElementById('firstDrumSymbol').innerText);  
 }
-    //document.getElementById('resetButton').addEventListener('click',stopDrum1=true);
 
+//a function to loop through symbols displayed in drum2
 async function spinDrum2(){
 for(let j=0;j<=4;j++){
     if (document.getElementById('secondDrumSymbol').innerText === symbolsObj.aSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.bSymbol;
-
-    }   else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.bSymbol){
+    }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.bSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.cSymbol;
     }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.cSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.dSymbol;
@@ -102,12 +121,12 @@ for(let j=0;j<=4;j++){
 }
 }
 
+//a function to loop through symbols displayed in drum3
 async function spinDrum3(){
 for(let k=0;k<=4;k++){
     if (document.getElementById('thirdDrumSymbol').innerText === symbolsObj.aSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.bSymbol;
-
-    }   else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.bSymbol){
+    }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.bSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.cSymbol;
     }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.cSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.dSymbol;
@@ -125,145 +144,44 @@ for(let k=0;k<=4;k++){
 }
 }
 
+//function to spin all drums simultaneously
 function spinDrums(){
+    stopRoll.removeAttribute('disabled');
+    startRoll.setAttribute('disabled', 'disabled');
+    drumSpinning = true;
+    stopDrum1=false;
+    stopDrum2=false;
+    stopDrum3=false;
     spinDrum1();
     spinDrum2();
     spinDrum3();
-    drumSpinning = true;
     resetDrums();
-    
+    match3=null;
     
 }
+//function to stop all drums simultaneously
 function stopDrums(){
+    startRoll.removeAttribute('disabled');
     drumSpinning=false;
     stopDrum1=true;
     stopDrum2=true;
     stopDrum3=true;
-    // drumArray.push(document.getElementById('firstDrumSymbol').innerText);
-    // console.log(drumArray);
-    // drumArray.push(document.getElementById('secondDrumSymbol').innerText);
-    // console.log(drumArray);
-    // drumArray.push(document.getElementById('thirdDrumSymbol').innerText);
-    // console.log(drumArray);
-    // matchDetection4();
-    matchDetection5();
-    for1();
-    for2();
-    for3();
-    makeComparable();
-    //console.log(detectionArray);
-    console.log(typeof(d1) , typeof(d2) , typeof(d3));
-    console.log(d1,d2,d3);
-    }
-
-let startRoll = document.getElementById('startButton');
-startRoll.addEventListener("click",spinDrums);
-
-let stopRoll = document.getElementById('resetButton');
-stopRoll.addEventListener('click',stopDrums);
-
-
-
-// let  noMatches=null, twoMatches=null, threeMatches=null;
-// function matchDetection(){
-//     if(drum1Position==drum2Position && drum2Position==drum3Position){
-//     threeMatches=true;
-//     console.log(threeMatches)
-//     return threeMatches;
-    
-//         }else if(drum1Position==drum2Position || drum1Position==drum3Position ||drum2Position==drum1Position || drum2Position==drum3Position ||drum3Position==drum1Position || drum3Position==drum2Position){
-//             twoMatches=true;
-    
-//             return twoMatches
-//                 }else if(drum1Position!=drum2Position && drum2Position!=drum3Position){
-//                     noMatches=true;
-            
-//                     return noMatches;
-// }
-
-// }
-
-// function showMatchNum(){
-//     if (threeMatches===true){
-//         console.log("3!");
-//     }else if(twoMatches===true){
-//         console.log('2!');
-//     }else if(noMatches===true){
-//         console.log("0!");
-//     }
-//     return
-// }
-
-// function scoring(){
-
-// }
-
-
-
-
-// drumArray.forEach(MatchDetection2);
-
-// function MatchDetection2(letter){
-//      for(i=0;i<2;i++){
-//          reverseDrumArray[i]
-//      }
-//     if(drumArray[i]==drumArray[2]){
-//         detectionArray
-//     }
-// }
-//}
-// drumArray.forEach();
-// function matchDetection3(){
-//     for(let i=0;i<3;i++){
-//         if(document.getElementById('thirdDrumSymbol').innerText==drumArray[i]){
-//             detectionArray.push(i);
-//         }else if(document.getElementById('secondDrumSymbol').innerText==drumArray[i]){
-//             detectionArray.push(i);
-//         }
-//     }
-// }
-//     if(sym!==drumArray[2]){
-//   detectionArray.push("match");
-//  }
-
-
-// detectionArray=drumArray.filter(matchDetection3);
-// console.log(detectionArray);
-
-// function matchDetection4(){
-// drumArray.forEach(element => {
-//     for(let i=0; i<drumArray.length; i++){
-//  if(drumArray[i] == reverseDrumArray[i]){
-//     detectionArray.push(drumArray[i]);
-//     //console.log(detectionArray[i]);
-//  }/*else{console.log('nothing');}*/
-//  }
-// });
-    
-//     }
-
-function matchDetection5(){
-    // for (i=0;i<drumArray.length; i++)
-   if(d1==d2 && d2==d3){
-    match3=true;
-    console.log(match3);
-   }else if((d1 ==d2 || d1==d3 || d2==d3)){
-    match2=true;
-    console.log(match2);
-    }else if(d1 !==d2 || d1!==d3 || d2!==d3){
-    noMatch=true;
-    console.log(noMatch);
+    matchDetection();
+    winnerLoser();
 }
-return;
-}
-   
-    
-
-
-// if (drum1Position == symbolsObj.aSymbol){
-// console.log("a is working");
+// function whoWins(){
+// if(match3==true){
+//     document.getElementById('playerPointsDisplay').innertext = 'You Win!';
+// }else if(match3==false){
+//     document.getElementById('playerPointsDisplay').innertext = 'You Lose!';
 // }
-// else{"not A"};
+// }
+//a function to initialize the game.
+function resetGame(){
+    document.getElementById('firstDrumSymbol').innerText="A";
+    document.getElementById('secondDrumSymbol').innerText="B";
+    document.getElementById('thirdDrumSymbol').innerText="C";
+}
 
 function resetDrums(){
     drum1Position="";
@@ -272,17 +190,24 @@ function resetDrums(){
     d1="";
     d2="";
     d3="";
+    compareD1="";
+    compareD2="";
+    compareD3="";
+    return;
 }
 function makeComparable(){
-    drumArray.push(document.getElementById('firstDrumSymbol').innerText);
-    console.log(drumArray);
-    drumArray.push(document.getElementById('secondDrumSymbol').innerText);
-    console.log(drumArray);
-    drumArray.push(document.getElementById('thirdDrumSymbol').innerText);
-     console.log(drumArray);
-    // console.log(detectionArray);
+    const results = {
+    compareD1:document.getElementById('firstDrumSymbol').innerText,
+    
+    compareD2:document.getElementById('secondDrumSymbol').innerText,
+    
+    compareD3:document.getElementById('thirdDrumSymbol').innerText
+    }
+     
+    return results
 }
-    function for1(){
+//sets the value shown in the first drum into the d1 variable
+function for1(){
     if(document.getElementById('firstDrumSymbol').innerText === "A"){
         d1=symbolsObj.aSymbol;
     }else if(document.getElementById('firstDrumSymbol').innerText === "B"){
@@ -295,8 +220,9 @@ function makeComparable(){
         d1=symbolsObj.eSymbol;
     }
     return d1;
-    }
-    function for2(){
+}
+//sets the value shown in the second drum into the d2 variable
+function for2(){
     if(drum2Position === "A"){
         d2=document.getElementById('secondDrumSymbol').innerText.aSymbol; 
     }else if(drum2Position === "B"){
@@ -310,7 +236,7 @@ function makeComparable(){
     }
     return d2;
 }
-
+//sets the value shown in the third drum into the d3 variable. this is done to be able to compare drum symbols.
 function for3(){
     if(drum3Position === "A"){
         d3=document.getElementById('thirdDrumSymbol').innerText.aSymbol;
@@ -325,4 +251,23 @@ function for3(){
     }
     return d3;
 }
+
+function matchDetection(){
+if (makeComparable().compareD1==makeComparable().compareD3 && makeComparable().compareD1==makeComparable().compareD2){
+    match3=true;
+    console.log("you win");
+}else{
+    match3=false
+    console.log("you lose");
+}
+return match3;
+}
+function winnerLoser(){
+if(match3==true){
+    document.getElementById('displayed').innertext = winOrLose.win;
+}else if(match3==false){
+    document.getElementById('displayed').innertext = winOrLose.lose;
+}
+}
+console.log(makeComparable().compareD1, makeComparable().compareD2, makeComparable().compareD3);
 

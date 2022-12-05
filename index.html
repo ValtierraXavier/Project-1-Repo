@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beat the House!</title>
     <link rel="stylesheet" href="style.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body> 
     <h1 id="tName">Beat The House</h1>
@@ -15,27 +15,24 @@
          <div class="drum" id = "slot1">
             <p id="firstDrumSymbol">A</p></div>
          <div class="drum" id = "slot2">
-            <p id="secondDrumSymbol">B</p></div>
+            <p id="secondDrumSymbol">A</p></div>
          <div class="drum" id = "slot3">
-            <p id="thirdDrumSymbol">C</p></div>
+            <p id="thirdDrumSymbol">A</p></div>
             
             <div id="IO">
-               <button id="startButton">Start</button>
+               <button id="stopButton">Stop</button>
                <button id="resetButton" >Reset</button>
-               <button id="submitAmount">Submit</button>
-               <input type="text" id="moneyInput" placeholder="How much cash?">
+               <!-- <button id="submitAmount">Submit</button>
+               <input type="text" id="moneyInput" placeholder="How much cash?"> -->
                <button id="spinButton">Spin</button>
-               <p class="displayTexts" id='playerPointsDisplay'>Player's Points</p>
-               <p class="displayTexts" id='housePointsDisplay'>House's Points</p>
                         </div>
-            
              </div>
     <div id="drumStopButtons">
                <button class="stopButtons" id="stop1Button">Stop</button> 
                <button class="stopButtons" id="stop2Button">Stop</button>
                <button class="stopButtons" id="stop3Button">Stop</button>
             </div>
-    
+            <p id="displayed">Here I am</p>
 </body>
 </html>
 <script src="./app.js"></script>
