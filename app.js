@@ -17,7 +17,9 @@ let winOrLose={
     win: "You Win!",
     lose:"You Lose"
 }
-//let match3, noMatch;
+
+let showWin,
+showLoss;
 
 let 
 drum1Position, 
@@ -178,9 +180,11 @@ function stopDrums(){
 // }
 //a function to initialize the game.
 function resetGame(){
+    stopDrums();
     document.getElementById('firstDrumSymbol').innerText="A";
     document.getElementById('secondDrumSymbol').innerText="B";
     document.getElementById('thirdDrumSymbol').innerText="C";
+    showWin.innerHTML="";
 }
 
 function resetDrums(){
@@ -264,10 +268,13 @@ return match3;
 }
 function winnerLoser(){
 if(match3==true){
-    document.getElementById('displayed').innertext = winOrLose.win;
+   showWin = document.getElementById('displayed');
+   showWin.innerHTML = "You Win!!";
 }else if(match3==false){
-    document.getElementById('displayed').innertext = winOrLose.lose;
+   showWin = document.getElementById('displayed');
+   showWin.innerHTML = "You lose!!";
 }
+return;
 }
 console.log(makeComparable().compareD1, makeComparable().compareD2, makeComparable().compareD3);
 
