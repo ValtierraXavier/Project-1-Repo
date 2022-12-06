@@ -1,14 +1,15 @@
 let 
-drum1SpeedSetting = 40, 
+drum1SpeedSetting = 25, 
 drum2SpeedSetting = 30, 
-drum3SpeedSetting = 20;
+drum3SpeedSetting = 40;
 
 let 
 stopDrum1,
 stopDrum2,
 stopDrum3,
-drumSpinning = null;
-
+drum1Spinning = null,
+drum2Spinning = null,
+drum3Spinning = null;
 let d1; 
 let d2; 
 let d3;
@@ -52,6 +53,7 @@ stopRoll.addEventListener('click',stopDrums);
 let resetAll = document.getElementById('resetButton');
 resetAll.addEventListener('click',resetGame);
 
+
 //function to set how quickly the symbols refresh on drum1 takes drum1SpeedSetting.
 function drum1Speed(ms){
     return new Promise(resolve =>{
@@ -91,13 +93,12 @@ for(let i=0;i<=4;i++){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.aSymbol;
     } 
     i=i-4;
-    //console.log(stopDrum1);
     await drum1Speed(drum1SpeedSetting);
     if(stopDrum1==true){
         return;
         }
     }
-    //console.log(document.getElementById('firstDrumSymbol').innerText);  
+    
 }
 
 //a function to loop through symbols displayed in drum2
@@ -150,7 +151,9 @@ for(let k=0;k<=4;k++){
 function spinDrums(){
     stopRoll.removeAttribute('disabled');
     startRoll.setAttribute('disabled', 'disabled');
-    drumSpinning = true;
+    drum1Spinning = true;
+    drum2Spinning = true;
+    drum3Spinning = true;
     stopDrum1=false;
     stopDrum2=false;
     stopDrum3=false;
@@ -159,12 +162,13 @@ function spinDrums(){
     spinDrum3();
     resetDrums();
     match3=null;
-    
 }
 //function to stop all drums simultaneously
 function stopDrums(){
     startRoll.removeAttribute('disabled');
-    drumSpinning=false;
+    drum1Spinning=false;
+    drum2Spinning=false;
+    drum3Spinning=false;
     stopDrum1=true;
     stopDrum2=true;
     stopDrum3=true;
@@ -182,8 +186,8 @@ function stopDrums(){
 function resetGame(){
     stopDrums();
     document.getElementById('firstDrumSymbol').innerText="A";
-    document.getElementById('secondDrumSymbol').innerText="B";
-    document.getElementById('thirdDrumSymbol').innerText="C";
+    document.getElementById('secondDrumSymbol').innerText="A";
+    document.getElementById('thirdDrumSymbol').innerText="A";
     showWin.innerHTML="";
 }
 
@@ -276,5 +280,5 @@ if(match3==true){
 }
 return;
 }
-console.log(makeComparable().compareD1, makeComparable().compareD2, makeComparable().compareD3);
+
 
