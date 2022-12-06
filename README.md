@@ -35,7 +35,7 @@ The game is simple: Match the three drums and you win. Its pretty hard though.
 A simple Win condition test method has been built in: Press the "reset" button then press the "stop" button. 
 All drum symbols will be set to "A" and text will appear above the buttons saying "You Win".
 
-[project]: google.com
+[project]: https://valtierraxavier.github.io/Project-1-Repo/
 
 ## Next Steps
 
