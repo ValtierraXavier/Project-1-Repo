@@ -19,7 +19,8 @@ let winOrLose={
     lose:"You Lose"
 }
 
-let showWin,
+let 
+showWin,
 showLoss;
 
 let 
@@ -31,6 +32,7 @@ let drumArray=[];
 let reverseDrumArray=[];
 let detectionArray=[];
 
+//used in 
 let compareD1, compareD2, compareD3, match3;
 
 const symbolsObj ={
@@ -85,11 +87,11 @@ for(let i=0;i<=4;i++){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.bSymbol;
     } else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.bSymbol){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.cSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.cSymbol){
+        }else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.cSymbol){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.dSymbol;
-    } else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.dSymbol){
+            } else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.dSymbol){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.eSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.eSymbol){
+                }else if(document.getElementById('firstDrumSymbol').innerText === symbolsObj.eSymbol){
         document.getElementById('firstDrumSymbol').innerText = symbolsObj.aSymbol;
     } 
     i=i-4;
@@ -106,13 +108,13 @@ async function spinDrum2(){
 for(let j=0;j<=4;j++){
     if (document.getElementById('secondDrumSymbol').innerText === symbolsObj.aSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.bSymbol;
-    }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.bSymbol){
+     }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.bSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.cSymbol;
-    }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.cSymbol){
+        }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.cSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.dSymbol;
-    } else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.dSymbol){
+            } else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.dSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.eSymbol;
-    }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.eSymbol){
+                 }else if(document.getElementById('secondDrumSymbol').innerText === symbolsObj.eSymbol){
         document.getElementById('secondDrumSymbol').innerText = symbolsObj.aSymbol;
     }
     await drum2Speed(drum2SpeedSetting);
@@ -129,13 +131,13 @@ async function spinDrum3(){
 for(let k=0;k<=4;k++){
     if (document.getElementById('thirdDrumSymbol').innerText === symbolsObj.aSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.bSymbol;
-    }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.bSymbol){
+        }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.bSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.cSymbol;
-    }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.cSymbol){
+            }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.cSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.dSymbol;
-    } else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.dSymbol){
+                }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.dSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.eSymbol;
-    }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.eSymbol){
+                    }else if(document.getElementById('thirdDrumSymbol').innerText === symbolsObj.eSymbol){
         document.getElementById('thirdDrumSymbol').innerText = symbolsObj.aSymbol;
     }
     await drum3Speed(drum3SpeedSetting);
@@ -212,19 +214,19 @@ function makeComparable(){
     compareD3:document.getElementById('thirdDrumSymbol').innerText
     }
      
-    return results
+    return results;
 }
 //sets the value shown in the first drum into the d1 variable
 function for1(){
     if(document.getElementById('firstDrumSymbol').innerText === "A"){
         d1=symbolsObj.aSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === "B"){
+        }else if(document.getElementById('firstDrumSymbol').innerText === "B"){
         d1=symbolsObj.bSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === "C"){
+            }else if(document.getElementById('firstDrumSymbol').innerText === "C"){
         d1=symbolsObj.cSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === "D"){
+                 }else if(document.getElementById('firstDrumSymbol').innerText === "D"){
         d1=symbolsObj.dSymbol;
-    }else if(document.getElementById('firstDrumSymbol').innerText === "E"){
+                     }else if(document.getElementById('firstDrumSymbol').innerText === "E"){
         d1=symbolsObj.eSymbol;
     }
     return d1;
@@ -233,13 +235,13 @@ function for1(){
 function for2(){
     if(drum2Position === "A"){
         d2=document.getElementById('secondDrumSymbol').innerText.aSymbol; 
-    }else if(drum2Position === "B"){
+        }else if(drum2Position === "B"){
         d2=document.getElementById('secondDrumSymbol').innerText.bSymbol; 
-    }else if(drum2Position === "C"){
+            }else if(drum2Position === "C"){
         d2=document.getElementById('secondDrumSymbol').innerText.cSymbol; 
-    }else if(drum2Position === "D"){
+                }else if(drum2Position === "D"){
         d2=document.getElementById('secondDrumSymbol').innerText.dSymbol; 
-    }else if(drum2Position === "E"){
+                    }else if(drum2Position === "E"){
         d2=document.getElementById('secondDrumSymbol').innerText.eSymbol;         
     }
     return d2;
@@ -264,19 +266,19 @@ function matchDetection(){
 if (makeComparable().compareD1==makeComparable().compareD3 && makeComparable().compareD1==makeComparable().compareD2){
     match3=true;
     console.log("you win");
-}else{
+    }else{
     match3=false
     console.log("you lose");
 }
 return match3;
 }
 function winnerLoser(){
-if(match3==true){
-   showWin = document.getElementById('displayed');
-   showWin.innerHTML = "You Win!!";
-}else if(match3==false){
-   showWin = document.getElementById('displayed');
-   showWin.innerHTML = "You lose!!";
+    if(match3==true){
+        showWin = document.getElementById('displayed');
+        showWin.innerHTML = "You Win!!";
+            }else if(match3==false){
+                showWin = document.getElementById('displayed');
+                showWin.innerHTML = "You lose!!";
 }
 return;
 }
