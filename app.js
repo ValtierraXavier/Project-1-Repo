@@ -1,39 +1,35 @@
 let 
 drum1SpeedSetting = 25, 
 drum2SpeedSetting = 30, 
-drum3SpeedSetting = 40;
-
-let 
+drum3SpeedSetting = 40, 
 stopDrum1,
 stopDrum2,
 stopDrum3,
 drum1Spinning = null,
 drum2Spinning = null,
-drum3Spinning = null;
-let d1; 
-let d2; 
-let d3;
-
-let winOrLose={
+drum3Spinning = null,
+d1,
+d2, 
+d3,
+winOrLose={
     win: "You Win!",
     lose:"You Lose"
-}
-
-let 
+}, 
 showWin,
-showLoss;
-
-let 
+showLoss, 
 drum1Position, 
 drum2Position,
-drum3Position;
+drum3Position,
 
-let drumArray=[];
-let reverseDrumArray=[];
-let detectionArray=[];
-
+ drumArray=[],
+ reverseDrumArray=[],
+ detectionArray=[],
 //used in 
-let compareD1, compareD2, compareD3, match3;
+ compareD1, 
+ compareD2, 
+ compareD3, 
+ match3,
+ match2
 
 const symbolsObj ={
     aSymbol:"A",
@@ -188,8 +184,8 @@ function stopDrums(){
 function resetGame(){
     stopDrums();
     document.getElementById('firstDrumSymbol').innerText="A";
-    document.getElementById('secondDrumSymbol').innerText="A";
-    document.getElementById('thirdDrumSymbol').innerText="A";
+    document.getElementById('secondDrumSymbol').innerText="B";
+    document.getElementById('thirdDrumSymbol').innerText="C";
     showWin.innerHTML="";
 }
 
@@ -266,20 +262,26 @@ function matchDetection(){
 if (makeComparable().compareD1==makeComparable().compareD3 && makeComparable().compareD1==makeComparable().compareD2){
     match3=true;
     console.log("you win");
-    }else{
+    }else if((makeComparable().compareD1==makeComparable().compareD2)||(makeComparable().compareD1==makeComparable().compareD3)||(makeComparable().compareD2==makeComparable().compareD3)||(makeComparable().compareD3==makeComparable().compareD2)){
     match3=false
-    console.log("you lose");
+    match2=true
+    console.log("partial Win");
+}else{
+    console.log(("You Lose"))
 }
-return match3;
+return match3, match2;
 }
 function winnerLoser(){
     if(match3==true){
         showWin = document.getElementById('displayed');
-        showWin.innerHTML = "You Win!!";
-            }else if(match3==false){
+        showWin.innerHTML = "Full Win!!";
+            }else if(match3==false && match2==true){
                 showWin = document.getElementById('displayed');
-                showWin.innerHTML = "You lose!!";
-}
+                showWin.innerHTML = "Partial Win!!";
+            }else{
+                showWin = document.getElementById('displayed');
+                showWin.innerHTML = "You Lose";
+            }
 return;
 }
 
