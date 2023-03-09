@@ -160,6 +160,7 @@ function spinDrums(){
     spinDrum3();
     resetDrums();
     match3=null;
+    match2=null;
 }
 //function to stop all drums simultaneously
 function stopDrums(){
@@ -170,6 +171,8 @@ function stopDrums(){
     stopDrum1=true;
     stopDrum2=true;
     stopDrum3=true;
+    match3=null;
+    match2=null;
     matchDetection();
     winnerLoser();
 }
