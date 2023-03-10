@@ -39,9 +39,23 @@ const symbolsObj ={
     eSymbol:"E"
 };
 
+document.addEventListener('keyup', (event) => {
+    const name = event.key;
+    const code = event.code;
+    if((code == 'Space') && (drum1Spinning == null || drum1Spinning ==false)){
+        spinDrums()
+    } else if(code == 'Space'&& drum1Spinning){
+        stopDrums()
+    }
+    // Alert the key name and key code on keydown
+    console.log(`Key pressed ${name} \r\nKey code value: ${code}`);
+  }, false);
+
+
 //starts a function to spin all drums when you click on the 'spin" button
 let startRoll = document.getElementById('spinButton');
 startRoll.addEventListener("click",spinDrums);
+
 
 //starts a function to stop all drums when you click the "stop" button.
 let stopRoll = document.getElementById('stopButton');
@@ -145,6 +159,13 @@ for(let k=0;k<=4;k++){
 }
 }
 
+//Function to render teh stop and spin buttons 
+function buttonState(button1, button2){
+    button1.style.display = "none";
+    button2.style.display = "block";
+    return
+}
+
 //function to spin all drums simultaneously
 function spinDrums(){
     stopRoll.removeAttribute('disabled');
@@ -159,6 +180,7 @@ function spinDrums(){
     spinDrum2();
     spinDrum3();
     resetDrums();
+    buttonState(startRoll,stopRoll);
     match3=null;
     match2=null;
 }
@@ -171,18 +193,11 @@ function stopDrums(){
     stopDrum1=true;
     stopDrum2=true;
     stopDrum3=true;
-    match3=null;
-    match2=null;
+    buttonState(stopRoll,startRoll);
     matchDetection();
     winnerLoser();
 }
-// function whoWins(){
-// if(match3==true){
-//     document.getElementById('playerPointsDisplay').innertext = 'You Win!';
-// }else if(match3==false){
-//     document.getElementById('playerPointsDisplay').innertext = 'You Lose!';
-// }
-// }
+
 //a function to initialize the game.
 function resetGame(){
     stopDrums();
