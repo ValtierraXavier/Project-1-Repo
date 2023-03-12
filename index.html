@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beat the House!</title>
     <link rel="stylesheet" href="style.css">
-    <style> @import url('https://fonts.googleapis.com/css2?family=Lexend+Exa&family=Nosifer&display=swap'); </style>  
+    <style> @import url("https://fonts.googleapis.com/css2?family=Lexend+Exa&family=Nosifer&display=swap"); </style>  
 </head>
 
 <body> 
-    <h1 id="tName">Beat The House</h1>
-    
+   <div>
+      <button id="helpButton">Help</button>
+      <h1 id ="Name">Beat The House</h1>
+   </div>
+    <div  class = "modal" id = "helpModal">
+      <p class = "modalContent">Win conditions:<br/>
+         Match three Symbols<br/>
+         Match two Symbols<br/><br/>
+         Controls:<br/>
+         Press the spacebar to start a roll<br/>
+         Press "R" to Reset the game<br/>
+         Press H for Help
+      </p>
+      <div class = "closeModal">X</div>
+    </div>
     <div id = "allslots">
          <div class="drum" id = "slot1">
             <p id="firstDrumSymbol">A</p></div>
@@ -30,4 +43,4 @@
             
 </body>
 </html>
-<script src="./app.js"></script>3
+<script src="./app.js"></script>

@@ -29,7 +29,9 @@ drum3Position,
  compareD2, 
  compareD3, 
  match3,
- match2
+ match2,
+ modalState
+ 
 
 const symbolsObj ={
     aSymbol:"A",
@@ -39,18 +41,20 @@ const symbolsObj ={
     eSymbol:"E"
 };
 
+
+
 document.addEventListener('keyup', (event) => {
     const name = event.key;
     const code = event.code;
+    if(code == 'KeyR'){
+        resetGame()
+    }
     if((code == 'Space') && (drum1Spinning == null || drum1Spinning ==false)){
         spinDrums()
     } else if(code == 'Space'&& drum1Spinning){
         stopDrums()
     }
-    // Alert the key name and key code on keydown
-    console.log(`Key pressed ${name} \r\nKey code value: ${code}`);
-  }, false);
-
+})
 
 //starts a function to spin all drums when you click on the 'spin" button
 let startRoll = document.getElementById('spinButton');
@@ -64,7 +68,6 @@ stopRoll.addEventListener('click',stopDrums);
 //resets all values to initial values.
 let resetAll = document.getElementById('resetButton');
 resetAll.addEventListener('click',resetGame);
-
 
 //function to set how quickly the symbols refresh on drum1 takes drum1SpeedSetting.
 function drum1Speed(ms){
@@ -279,13 +282,13 @@ function for3(){
 function matchDetection(){
 if (makeComparable().compareD1==makeComparable().compareD3 && makeComparable().compareD1==makeComparable().compareD2){
     match3=true;
-    console.log("you win");
+    // console.log("you win");
     }else if((makeComparable().compareD1==makeComparable().compareD2)||(makeComparable().compareD1==makeComparable().compareD3)||(makeComparable().compareD2==makeComparable().compareD3)||(makeComparable().compareD3==makeComparable().compareD2)){
     match3=false
     match2=true
-    console.log("partial Win");
+    // console.log("partial Win");
 }else{
-    console.log(("You Lose"))
+    // console.log(("You Lose"))
 }
 return match3, match2;
 }
@@ -304,3 +307,38 @@ return;
 }
 
 
+
+
+const helpButton = document.getElementById('helpButton');
+helpButton.addEventListener('click', openModal);
+const helpModal = document.getElementById('helpModal');
+const closeTheModal = document.getElementsByClassName('closeModal')[0]
+closeTheModal.addEventListener('click',openModal)
+closeTheModal.addEventListener('mouseover',onHover)
+closeTheModal.addEventListener('mouseout', noHover)
+// console.log(closeTheModal)
+
+function onHover(){
+    closeTheModal.style.transitionDuration = '.2s'
+    closeTheModal.style.border = 'solid coral'
+    closeTheModal.style.width = '50px'
+    // closeTheModal.style.transitionDelay = '1s'
+    closeTheModal.innerHTML = 'Close'
+}
+function noHover(){
+    closeTheModal.style.borderColor = 'lightgray'
+    closeTheModal.style.width = '20px'
+    closeTheModal.innerHTML = 'X'
+}
+function openModal(){
+    // console.log(modalState)
+    if((modalState == 'closed') || (modalState == undefined)){
+        modalState = 'open'
+        console.log(modalState)
+        helpModal.style.display = 'flex'
+    }else if(modalState == 'open'){
+        modalState='closed'
+        console.log(modalState)
+        helpModal.style.display = 'none'
+    }
+}
