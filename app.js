@@ -49,6 +49,9 @@ document.addEventListener('keyup', (event) => {
     if(code == 'KeyR'){
         resetGame()
     }
+    if(code == 'KeyH'){
+        openModal()
+    }
     if((code == 'Space') && (drum1Spinning == null || drum1Spinning ==false)){
         spinDrums()
     } else if(code == 'Space'&& drum1Spinning){
