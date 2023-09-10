@@ -293,3 +293,150 @@ body{
         width: 95%;
     }
 }
+
+@media(min-width: 601px) and (max-width: 900px){
+
+    #helpButton{
+        position: fixed;
+        font-size: 2rem;
+        height:2.2rem;
+        width: 4.5rem;
+        box-sizing: border-box;
+        padding: 2px;
+    }
+
+    #Name{
+        font-size: 3rem;
+    }  
+    
+    .closeModalButton{
+        top:11%;
+        left: 85%;
+        width:1.5rem;
+    }
+    
+    .modalContent{
+        height: 80%;
+        width:100%;        
+    }
+
+    #allslots{
+        position: relative;
+        width: 95%;
+        height:50%;
+        box-sizing: border-box;
+    }
+
+    .main{
+        display:flex;
+        flex-flow: column nowrap;
+        height: 90%;
+        width: 100%;
+        justify-content: space-between;
+        margin: 5% 0%;
+    }
+    .drum{
+        font-size: 6rem;
+        width: 30%;
+        height: 90%;
+        margin: 0% 3.5%;
+    }
+
+    #IO{
+        position: relative;
+        justify-content: space-around;
+        align-items: center;
+        height:50%;
+        width: 100%;
+        top:3%;
+    }
+
+    #displayed{
+        font-size: 3rem;
+    }
+    .IOContainer{
+        justify-content: space-around;
+        width: 95%;
+        height: 80%;
+        margin: 0;
+    }
+
+    .ioButtons{
+        width: 95%;
+    }
+}
+
+@media(min-width: 901px) and (max-width: 1600px){
+
+    #helpButton{
+        position: fixed;
+        font-size: 2rem;
+        height: 3rem;
+        width: 5.5rem;
+        box-sizing: border-box;
+        padding: 3px;
+    }
+
+    #Name{
+        font-size: 4rem;
+    }  
+    
+    .closeModalButton{
+        top:11%;
+        left: 85%;
+        width:1.5rem;
+    }
+    
+    .modalContent{
+        height: 80%;
+        width:50%;        
+    }
+
+    .main{
+        display:flex;
+        flex-flow: row nowrap;
+        height: 90%;
+        width: 100%;
+        justify-content: space-between;
+        /* margin: 5% 0%; */
+    }
+
+    #allslots{
+        position: relative;
+        width: 75%;
+        height:50%;
+        box-sizing: border-box;
+    }
+
+    .drum{
+        font-size: 7rem;
+        width: 30%;
+        height: 100%;
+        margin: 0% 3.5%;
+    }
+
+    #IO{
+        position: relative;
+        justify-content: space-around;
+        align-items: center;
+        height:40%;
+        width: 23%;
+        top: 2%;
+    }
+
+    #displayed{
+        font-size: 2rem;
+    }
+
+    .IOContainer{
+        justify-content: space-around;
+        width: 95%;
+        height: 50%;
+        margin: 0;
+    }
+
+    .ioButtons{
+        width: 75%;
+        height: 40%
+    }
+}
