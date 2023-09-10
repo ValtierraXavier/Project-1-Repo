@@ -320,23 +320,15 @@ closeTheModal.addEventListener('click',openModal)
 closeTheModal.addEventListener('mouseover',onHover)
 closeTheModal.addEventListener('mouseout', noHover)
 
-function onHover(){
-    closeTheModal.style.top = '22%'
-    closeTheModal.style.right = '26%'
-    closeTheModal.style.left = '65%'
-    closeTheModal.style.transition = '.1s ease-in-out'
-    closeTheModal.style.border = 'solid black'
-    setTimeout(()=>{closeTheModal.innerHTML = 'Close'}, 200)
-}
+// function onHover(){
+//     closeTheModal.style.transition = 'right .1s ease-in-out'
+//     setTimeout(()=>{closeTheModal.innerHTML = 'Close'}, 200)
+// }
 
-function noHover(){
-    closeTheModal.style.top = '22%'
-    closeTheModal.style.right = '26%'
-    closeTheModal.style.left = '71.3%'
-    closeTheModal.style.borderColor = 'lightgray'
-    
-    setTimeout(()=>{closeTheModal.innerHTML = 'X'}, 50)
-}
+// function noHover(){
+//     closeTheModal.style.borderColor = 'lightgray'
+//     setTimeout(()=>{closeTheModal.innerHTML = 'X'}, 50)
+// }
 
 function openModal(){
     if((modalState == 'closed') || (modalState == undefined)){
