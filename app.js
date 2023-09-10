@@ -59,7 +59,7 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
-//starts a function to spin all drums when you click on the 'spin" button
+//starts a function to spin all drums when you click on the 'spin' button
 let startRoll = document.getElementById('spinButton');
 startRoll.addEventListener("click",spinDrums);
 
@@ -168,7 +168,7 @@ for(let k=0;k<=4;k++){
 //Function to render teh stop and spin buttons 
 function buttonState(button1, button2){
     button1.style.display = "none";
-    button2.style.display = "block";
+    button2.style.display = "flex";
     return
 }
 
@@ -314,34 +314,36 @@ return;
 
 const helpButton = document.getElementById('helpButton');
 helpButton.addEventListener('click', openModal);
-const helpModal = document.getElementById('helpModal');
-const closeTheModal = document.getElementsByClassName('closeModal')[0]
+const helpModal = document.getElementById('helpModalBackground');
+const closeTheModal = document.getElementsByClassName('closeModalButton')[0]
 closeTheModal.addEventListener('click',openModal)
 closeTheModal.addEventListener('mouseover',onHover)
 closeTheModal.addEventListener('mouseout', noHover)
-// console.log(closeTheModal)
 
 function onHover(){
-    closeTheModal.style.transitionDuration = '.2s'
-    closeTheModal.style.border = 'solid coral'
-    closeTheModal.style.width = '50px'
-    // closeTheModal.style.transitionDelay = '1s'
-    closeTheModal.innerHTML = 'Close'
+    closeTheModal.style.top = '22%'
+    closeTheModal.style.right = '26%'
+    closeTheModal.style.left = '65%'
+    closeTheModal.style.transition = '.1s ease-in-out'
+    closeTheModal.style.border = 'solid black'
+    setTimeout(()=>{closeTheModal.innerHTML = 'Close'}, 200)
 }
+
 function noHover(){
+    closeTheModal.style.top = '22%'
+    closeTheModal.style.right = '26%'
+    closeTheModal.style.left = '71.3%'
     closeTheModal.style.borderColor = 'lightgray'
-    closeTheModal.style.width = '20px'
-    closeTheModal.innerHTML = 'X'
+    
+    setTimeout(()=>{closeTheModal.innerHTML = 'X'}, 50)
 }
+
 function openModal(){
-    // console.log(modalState)
     if((modalState == 'closed') || (modalState == undefined)){
         modalState = 'open'
-        console.log(modalState)
         helpModal.style.display = 'flex'
     }else if(modalState == 'open'){
         modalState='closed'
-        console.log(modalState)
         helpModal.style.display = 'none'
     }
 }

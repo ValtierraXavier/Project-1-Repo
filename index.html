@@ -10,37 +10,47 @@
 </head>
 
 <body> 
-   <div>
+   <section>
       <button id="helpButton">Help</button>
       <h1 id ="Name">Beat The House</h1>
-   </div>
-    <div  class = "modal" id = "helpModal">
-      <p class = "modalContent">Win conditions:<br/>
-         Match three Symbols<br/>
-         Match two Symbols<br/><br/>
-         Controls:<br/>
-         Press the spacebar to start a roll<br/>
-         Press "R" to Reset the game<br/>
-         Press H for Help
-      </p>
-      <div class = "closeModal">X</div>
-    </div>
-    <div id = "allslots">
-         <div class="drum" id = "slot1">
-            <p id="firstDrumSymbol">A</p></div>
-         <div class="drum" id = "slot2">
-            <p id="secondDrumSymbol">B</p></div>
-         <div class="drum" id = "slot3">
-            <p id="thirdDrumSymbol">C</p></div>
-            
-         <div id="IO">
-               <button id="stopButton" class="ioButtons">Stop</button>
-               <button id="resetButton" class="ioButtons">Reset</button>
-               <p id="displayed"></p>
-               <button id="spinButton" class="ioButtons">Spin</button>
-         </div>
+   </section>
+   <div class = "modal" id = "helpModalBackground">
+      <div class = "closeModalButton">X</div>
+      <div class = "modalContent">
+         <p class = 'content'>
+            Win conditions:<br/><br/>
+            Match three Symbols = Full win<br/>
+            Match two Symbols = Partial win<br/><br/>
+            Controls:<br/><br/>
+            Press the spacebar to start a roll<br/>
+            Press "R" to Reset the game<br/>
+            Press H for Help
+         </p>
       </div>
-            
-</body>
-</html>
-<script src="./app.js"></script>
+   </div>
+   <div class ='main'>
+      <section id = "allslots">
+         <div class="drum" id = "slot1">
+            <p id="firstDrumSymbol">A</p>
+         </div>
+         <div class="drum" id = "slot2">
+            <p id="secondDrumSymbol">B</p>
+         </div>
+         <div class="drum" id = "slot3">
+            <p id="thirdDrumSymbol">C</p>
+         </div>
+      </section>
+                  
+      <section id="IO">
+         <p id="displayed"></p>
+         <section class='IOContainer'>
+            <button id="spinButton" class="ioButtons">Spin</button>
+            <button id="stopButton" class="ioButtons">Stop</button>
+            <button id="resetButton" class="ioButtons">Reset</button>
+         </section>
+      </section>
+   </div>
+                  
+               </body>
+               </html>
+               <script src="./app.js"></script>
